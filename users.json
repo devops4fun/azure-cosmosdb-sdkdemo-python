@@ -1,0 +1,56 @@
+{
+    "users": 
+    [{
+        "userId": 1,
+        "id": "43499592694",
+        "firstname": "Michelle",
+        "lastname": "Jenkins",
+        "dob(MMDDYYY)": "08211981",
+        "mobile": "555-111-5255",
+        "ssn": "123-45-6789",
+        "licenseno": "10202",
+        "type": "therapist",
+        "address": [{
+            "street": "1 west avenue",
+            "city": "philadelphia",
+            "state": "pa",
+            "zipcode": 19121
+        }]
+  },
+    {
+        "userId": 2,
+        "id": "27862409307",
+        "firstname": "Lizzo",
+        "lastname": "Johnson",
+        "dob(MMDDYYY)": "08211981",
+        "mobile": "555-111-5532",
+        "ssn": "123-45-6789",
+        "licenseno": "10202",
+        "type": "patient",
+        "address": [{
+            "street": "21 east bulevard",
+            "city": "hollywood",
+            "state": "ca",
+            "zipcode": 88832
+        }]
+    },
+    {
+        "userId": 3,
+        "id": "46435689313",
+        "firstname": "Orley",
+        "lastname": "Libra",
+        "dob(MMDDYYY)": "08211981",
+        "mobile": "555-111-5534",
+        "ssn": "123-45-6789",
+        "licenseno": "10202",
+        "type": "patient",
+        "address": [{
+            "street": "15 east broad",
+            "city": "philadelphia",
+            "state": "pa",
+            "zipcode": 19121
+        }] 
+    }
+    ]
+}
+    

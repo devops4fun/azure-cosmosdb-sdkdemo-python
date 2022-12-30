@@ -1,0 +1,11 @@
+{
+    "variables":
+    {
+        "CONSISTENCY_LEVEL" : "Session",
+        "DATABASE_NAME" : "mydatabasename",
+        "CONTAINER_NAME" : "mycontainername",
+        "URL" : "https://YOURCOSMOSDBACCOUNTNAME.documents.azure.com:443/",
+        "KEY" : "YOURCOSMOSDBPRIMARYMASTERKEYVALUE",
+        "PARTITION_KEY_PATH": "/userId"
+    }
+}
