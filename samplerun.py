@@ -1,6 +1,7 @@
 from azure.cosmos import CosmosClient, exceptions, PartitionKey
 import os
 import json
+import time
 
 #load custom variables
 varfile = open('custom_vars.json')
@@ -27,12 +28,26 @@ def create_items(container):
         print("Oops! This item already exists in the container")
 
 
-def delete_items(container):
+def delete_items(container, database, client):
     for i in data['users']:
         container.delete_item(item=i['id'], partition_key=i['userId'])
         print(f"Successfully deleted item with id: {i['id']} and userId: {i['userId']}")
+    delete_database(database, client)
+
+def delete_database(database, client):
+    #cleanup database
+    try:
+        client.delete_database(database)
+        print("Demo is complete - provisioned resources have been successfully deleted.")
+    except exceptions.CosmosResourceNotFoundError:
+        pass        
+
+def end():
+    print("Demo complete. The provisioned resources have been left untouched per your request.")
+    pass 
 
 def run_sample():
+    response = 'yes'
     client = CosmosClient(URL, credential=KEY, consistency_level=CONSISTENCY_LEVEL)
     try:
         #setup database for sample run
@@ -42,19 +57,15 @@ def run_sample():
         container = database.create_container_if_not_exists(id=CONTAINER_NAME, partition_key=PartitionKey(path="/userId"))
         
         create_items(container)
-        response = input(f"The database => {DATABASE_NAME}, container => {CONTAINER_NAME}, and items have been successfully created! Are you ready to delete them (yes/no)?")
-        if response == "yes" or "y":
-            delete_items(container)
-        else:
-            pass
 
-        #cleanup database
-        try:
-            client.delete_database(database)
-            print("clean up is complete - provisioned resources have been successfully deleted.")
-        except exception.CosmosResourceNotFoundError:
-            pass
-    
+        response = input(f"The database => {DATABASE_NAME}, container => {CONTAINER_NAME}, and items have been successfully created! Are you ready to delete them (yes/no)?")
+        if response in ("no", "n"):
+            end()
+        elif response in ("yes", "y"):
+            delete_items(container, database, client)
+        else:
+            print("***Invalid option entered - Yes or No expected***")
+   
     except exceptions.CosmosHttpResponseError as e:
         print(f"Oops! Encountered an error: {e.message}")
 
