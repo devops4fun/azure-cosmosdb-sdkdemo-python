@@ -1,10 +1,10 @@
 # azure-cosmosdb-sdkdemo-python
-Interact with Azure CosmosDB via sdk for Python
+Interact with Azure CosmosDB via the SDK for Python
 
-Azure provides several SDKs to interact with the CosmosDB service. Here is a demo script leveraging the SDK to accomplish the following activities:
+Azure provides several [SDKs](https://learn.microsoft.com/en-us/azure/cosmos-db/nosql/sdk-python) to interact with the CosmosDB service. Here is a demo script leveraging the Python SDK to accomplish the following activities:
 1. Instantiate the [CosmosClient](https://learn.microsoft.com/en-us/python/api/azure-cosmos/azure.cosmos.cosmosclient?view=azure-python) class create a client object. 
 2. Use the client object to create a new new database, container within CosmosDB.
-3. Populate the CosmosDB container the items stored in the `users.json` file within this rep. to Azure via the `Python SDK` (samplerun.py).
+3. Populate the CosmosDB container with the items stored in `users.json`.
 4. Clean-up (i.e. delete) the resources created during the demo.
 
 ### Pre-requisites
